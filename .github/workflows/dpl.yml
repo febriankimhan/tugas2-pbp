@@ -18,8 +18,8 @@ jobs:
   Deployment:
     runs-on: ubuntu-latest
     env:
-      HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
+      HEROKU_API_KEY: 8ee78298-8c16-42ae-884f-4164b8e095e9
+      HEROKU_APP_NAME: tugas2-pbp-bian
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby 2.7
