@@ -1,7 +1,7 @@
 Link Heroku: http://tugas2-pbp-bian.herokuapp.com/katalog/
 
 1. **Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara `urls.py`, `views.py`, `models.py`, dan berkas `html`.**  
-    ![Bagan MTV Architecture Django](https://lucid.app/documents/view/4a1a0706-12c4-47ba-9810-7ad42862a43f)
+    ![Bagan MTV Architecture Django](Bagan_MTV_Architecture_Django.png)
 
 2. **Jelaskan kenapa menggunakan *virtual environment*? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan *virtual environment*?**  
     Setiap kita mengerjakan sebuah proyek, berbagai *package* ataupun *framework* akan kita gunakan untuk membantu pekerjaan kita. Tentunya, *package* dan *framework* ini rutin di-*update* demi meningkatkan kegunaannya. Terkadang, dalam *update*-*update* ini ada beberapa fungsi yang berubah ataupun hilang (yang diganti dengan fungsi yang baru). Jika proyek kita menggunakan fungsi-fungsi tersebut, maka ini bisa merusak program yang sudah kita buat pada proyek ini. Disinilah kegunaan *virtual environment*, di mana kita bisa menggunakan *package* atau *framework* tersebut tanpa khawatir terjadi perubahan di dalamnya. Namun, ini bukan berarti kita tidak bisa membuat proyek, seperti aplikasi web berbasis Django, tanpa *virtual environment*. Hanya saja, akan ada resiko yang sudah dijelaskan sebelumnya yang bisa terjadi.
