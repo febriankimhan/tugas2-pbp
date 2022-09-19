@@ -1,0 +1,112 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": "False",
+            "title": "One Piece Film: Red",
+            "rating": "5",
+            "release_date": "2022-08-06",
+            "review": "One Piece is real."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": "True",
+            "title": "Shrek",
+            "rating": "5",
+            "release_date": "2001-05-18",
+            "review": "Somebody won't tell me the world ..."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": "False",
+            "title": "Morbius",
+            "rating": "5",
+            "release_date": "2022-04-01",
+            "review": "I really like when Morbius went \"It's Morbin time.\" Truly one of the films of all time."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": "True",
+            "title": "Satria Dewa: Gatotkaca",
+            "rating": "4",
+            "release_date": "2022-06-09",
+            "review": "Saya sangat suka ketika Gatotkaca meneriakkan \"Sudah saatnya aku menggatot\" dan langsung menggatot semua musuh di hadapannya. Benar-benar salah satu film sepanjang masa."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": "True",
+            "title": "Joker",
+            "rating": "5",
+            "release_date": "2019-10-04",
+            "review": "It's kinda weird when we see the MC being a villain. But, in this movie, we got to see 'the birth of a villain'. Their backstory is miserable and the casts did their job very well."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": "True",
+            "title": "Toy Story",
+            "rating": "5",
+            "release_date": "1995-11-22",
+            "review": "It's good and joyful."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": "False",
+            "title": "Django Unchained",
+            "rating": "4",
+            "release_date": "2012-12-25",
+            "review": "Django OwO"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": "True",
+            "title": "Your Name",
+            "rating": "5",
+            "release_date": "2017-04-07",
+            "review": "Kimi no, namae wa ... UDIN!!!"
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": "True",
+            "title": "Up",
+            "rating": "5",
+            "release_date": "2009-05-29",
+            "review": "It's joyful and unique. We got to see an old man with his house flying with thousands of balloons and a scout boy traversing various places on their journey."
+        }
+    },
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": "True",
+            "title": "Finding Nemo",
+            "rating": "5",
+            "release_date": "2003-05-30",
+            "review": "Fish"
+        }
+    }
+]
