@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Halo, {{username}}!</h1>
+
+<table border="1">
+    <tr>
+        <th>Tanggal Dibuat</th>
+        <th>Judul Task</th>
+        <th>Deskripsi Task</th>
+        <th>Status Task</th>
+        <th>Tombol Ubah Status Task</th>
+        <th>Tombol Hapus Task</th>
+    </tr>
+    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
+    {% for task in todolist %}
+        <tr>
+            <td>{{task.date}}</td>
+            <td>{{task.title}}</td>
+            <td>{{task.description}}</td>
+            {% if task.is_finished %}
+                <td>Selesai</td>
+            {% else %}
+                <td>Belum selesai</td>
+            {% endif %}
+            <td align="center"><button><a href="change-status/{{ task.id }}">Ubah Status</a></button></td>
+            <td align="center"><button><a href="delete-task/{{ task.id }}">Hapus Task</a></button></td>
+        </tr>
+    {% endfor %}
+</table>
+
+
+<button><a href="{% url 'todolist:create-task' %}">Tambah Task Baru</a></button>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% endblock content %}

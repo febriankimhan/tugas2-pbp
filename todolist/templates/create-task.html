@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="create-task">
+    <h1>Buat Task Baru</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>Judul task: </td>
+                <td><input type="text" name="task_title" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Deskripsi task: </td>
+                <td><input type="text" name="task_description" class="form-control"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input class="btn submit_btn" type="submit" value="Submit"></td>
+            </tr>    
+        </table>
+    </form>
+</div>
+{% endblock content %}
