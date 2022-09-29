@@ -22,8 +22,6 @@ def show_todolist(request):
     return render(request, 'todolist.html', context)
 
 def create_task(request):
-    form = Task()
-
     if request.method == "POST":
         form = Task()
         form.title = request.POST.get('task_title')
