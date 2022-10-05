@@ -5,36 +5,51 @@
 {% endblock meta %}
 
 {% block content %}
-<h1>Halo, {{username}}!</h1>
-
-<table border="1">
-    <tr>
-        <th>Tanggal Dibuat</th>
-        <th>Judul Task</th>
-        <th>Deskripsi Task</th>
-        <th>Status Task</th>
-        <th>Tombol Ubah Status Task</th>
-        <th>Tombol Hapus Task</th>
-    </tr>
-    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-    {% for task in todolist %}
-        <tr>
-            <td>{{task.date}}</td>
-            <td>{{task.title}}</td>
-            <td>{{task.description}}</td>
-            {% if task.is_finished %}
-                <td>Selesai</td>
-            {% else %}
-                <td>Belum selesai</td>
-            {% endif %}
-            <td align="center"><button><a href="change-status/{{ task.id }}">Ubah Status</a></button></td>
-            <td align="center"><button><a href="delete-task/{{ task.id }}">Hapus Task</a></button></td>
-        </tr>
-    {% endfor %}
-</table>
-
-
-<button><a href="{% url 'todolist:create-task' %}">Tambah Task Baru</a></button>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
-
+<body style="margin-bottom: 100px;">
+    <nav class="navbar navbar-expand-lg" style="background-color: purple;">
+        <div class="container-fluid">
+            <div class="navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="navbar-brand mb-0 h1 m-2" type="button" href="{% url 'todolist:show_todolist'%}" style="color: white;">Todolist-ku</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="btn btn-primary m-2" type="button" href="{% url 'todolist:create-task' %}">Tambah Task Baru</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-danger m-2" type="button" href="{% url 'todolist:logout' %}">Logout</a>
+                </li>
+            </ul>    
+        </div>
+    </nav>
+    
+    {% if todolist %}
+        <h1 style="text-align: center; margin-top: 20px; margin-bottom: 50px;">Halo, {{username}}!</h1>
+        {% for task in todolist %}
+            <div class="card mb-3" style="width: 50rem; margin: auto; width: 80%; background-color: rgb(233, 248, 255);">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        {{task.title}}
+                        {% if task.is_finished %}
+                            <span class="badge text-bg-success">Selesai</span>
+                        {% else %}
+                            <span class="badge text-bg-secondary">Belum Selesai</span>
+                        {% endif %}
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">dibuat {{task.date}}</h6>
+                    <p class="card-text">{{task.description}}</p>
+                    <a class="btn btn-success" href="change-status/{{ task.id }}">Ubah Status</a>
+                    <a class="btn btn-danger" href="delete-task/{{ task.id }}">Hapus Task</a>
+                    
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h1 style="text-align: center; margin-top: 20px;">Halo, {{username}}!</h1>
+        <p style="text-align: center;">Kamu tidak punya todolist, nih.</p>
+    {% endif %}    
+</body>
 {% endblock content %}

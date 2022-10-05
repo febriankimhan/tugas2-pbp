@@ -5,26 +5,41 @@
 {% endblock meta %}
 
 {% block content %}
+<nav class="navbar navbar-expand-lg" style="background-color: purple;">
+    <div class="container-fluid">
+        <div class="navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="navbar-brand mb-0 h1 m-2" type="button" href="{% url 'todolist:show_todolist'%}" style="color: white;">Todolist-ku</a>
+                </li>
+            </ul>
+        </div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="btn btn-danger m-2" type="button" href="{% url 'todolist:logout' %}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
 
-<div class="create-task">
-    <h1>Buat Task Baru</h1>
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        <table>
-            <tr>
-                <td>Judul task: </td>
-                <td><input type="text" name="task_title" class="form-control"></td>
-            </tr>
-            <tr>
-                <td>Deskripsi task: </td>
-                <td><input type="text" name="task_description" class="form-control"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><input class="btn submit_btn" type="submit" value="Submit"></td>
-            </tr>    
-        </table>
-    </form>
+<div class="card" style="width: 21rem; max-width: 80%; margin: auto; margin-top: 50px;">
+    <div class="card-body">
+        <h2 class="text-center mb-4">Buat Task Baru</h2>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Judul</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="task_title">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="task_description"></textarea>
+            </div>
+            <input class="btn btn-success" type="submit" value="Submit">
+            <a class="btn btn-danger" href="{% url 'todolist:show_todolist'%}">Cancel</a>
+        </form>
+    </div>
 </div>
+
 {% endblock content %}
