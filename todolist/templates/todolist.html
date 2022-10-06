@@ -2,6 +2,19 @@
 
 {% block meta %}
 <title>Todolist-ku</title>
+<style>
+    .card{
+        width: 50rem; 
+        margin: auto; 
+        max-width: 80%; 
+        background-color: rgb(233, 248, 255);
+    }
+    .card:hover{
+        background-color: rgb(206, 233, 255);
+        transform: translate(0px, -1px);
+        transition-duration: 0.1s;
+    }
+</style>
 {% endblock meta %}
 
 {% block content %}
@@ -29,7 +42,7 @@
     {% if todolist %}
         <h1 style="text-align: center; margin-top: 20px; margin-bottom: 50px;">Halo, {{username}}!</h1>
         {% for task in todolist %}
-            <div class="card mb-3" style="width: 50rem; margin: auto; max-width: 80%; background-color: rgb(233, 248, 255);">
+            <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">
                         {{task.title}}
