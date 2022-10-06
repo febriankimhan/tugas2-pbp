@@ -29,7 +29,7 @@
     {% if todolist %}
         <h1 style="text-align: center; margin-top: 20px; margin-bottom: 50px;">Halo, {{username}}!</h1>
         {% for task in todolist %}
-            <div class="card mb-3" style="width: 50rem; margin: auto; width: 80%; background-color: rgb(233, 248, 255);">
+            <div class="card mb-3" style="width: 50rem; margin: auto; max-width: 80%; background-color: rgb(233, 248, 255);">
                 <div class="card-body">
                     <h5 class="card-title">
                         {{task.title}}
