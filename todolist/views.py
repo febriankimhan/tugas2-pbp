@@ -8,6 +8,8 @@ from django.contrib import messages
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.http import HttpResponse, HttpResponseNotFound
+from django.core import serializers
 
 from todolist.models import Task
 
@@ -77,3 +79,34 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('todolist:login'))
     response.delete_cookie('last_login')
     return response
+
+def show_todolist_json(request):
+    data_todolist = Task.objects.all()
+    return HttpResponse(serializers.serialize("json", data_todolist))
+
+def add_todolist(request):
+    if request.method == "POST":
+        title = request.POST.get('task_title')
+        description = request.POST.get('task_description')
+        date = str(datetime.date.today())
+        user = request.user
+
+        new_task = Task(
+            title=title,
+            description=description,
+            date=date,
+            user=user
+        )
+        new_task.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+def delete_todolist(request, id):
+    this_task = Task.objects.get(id=id)
+    if this_task.user == request.user:
+        this_task.delete()
+        return HttpResponse(b"DELETED", status=201)
+
+    return HttpResponseNotFound()
