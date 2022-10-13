@@ -81,7 +81,7 @@ def logout_user(request):
     return response
 
 def show_todolist_json(request):
-    data_todolist = Task.objects.all()
+    data_todolist = Task.objects.filter(user=request.user)
     return HttpResponse(serializers.serialize("json", data_todolist))
 
 def add_todolist(request):

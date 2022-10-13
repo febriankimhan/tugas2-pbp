@@ -18,52 +18,35 @@
 {% endblock meta %}
 
 {% block content %}
-<div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="addTaskModalLabel">Tambah Task Baru</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form id="formTaskBaru" onsubmit="return false;">
-                <div class="modal-body">
-                    {% csrf_token %}
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Judul</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1" name="task_title">
-                    </div>
-                    <div class="mb-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="task_description"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button id="submitTaskBaru" type="submit" class="btn btn-success" value="Submit">Simpan</button>
-                </div>    
-            </form>
-        </div>
-    </div>
-</div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          ...
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
 <body style="margin-bottom: 100px;">
+    <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="addTaskModalLabel">Tambah Task Baru</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="formTaskBaru" onsubmit="return false;">
+                    <div class="modal-body">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Judul</label>
+                            <input type="text" class="form-control" id="exampleFormControlInput1" name="task_title">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="task_description"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button id="submitTaskBaru" type="submit" class="btn btn-success" value="Submit" data-bs-dismiss="modal">Simpan</button>
+                    </div>    
+                </form>
+            </div>
+        </div>
+    </div>
+    
     <nav class="navbar navbar-expand-lg" style="background-color: purple;">
         <div class="container-fluid">
             <div class="navbar-collapse" id="navbarSupportedContent">
@@ -75,12 +58,9 @@
             </div>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <!-- <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#addTaskModal">
-                        Launch demo modal
-                    </button>                       -->
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Launch demo modal
-                    </button>
+                    <button type="button" class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                        Tambah Task Baru
+                    </button>                      
                 </li>
                 <li class="nav-item">
                     <a class="btn btn-danger m-2" type="button" href="{% url 'todolist:logout' %}">Logout</a>
@@ -128,7 +108,7 @@
         document.getElementById("todolist-cards").innerHTML = ""
 
         const todolist = await getTodolist()
-        if(todolist) {
+        if(todolist.length > 0) {
             topContent = `
             <h1 style="text-align: center; margin-top: 20px; margin-bottom: 50px;">Halo, {{username}}!</h1>
             `
@@ -141,14 +121,14 @@
         document.getElementById("top-content").innerHTML = topContent
 
         let todolistCardsString = ``
-        todolist.forEach((item) => {
+        todolist.forEach((task) => {
             todolistCardsString += `
             <div class="card mb-3">
                 <div class="card-body">
                     <h5 class="card-title">
-                        ${item.fields.title}
+                        ${task.fields.title}
             `
-            if(item.fields.is_finished) {
+            if(task.fields.is_finished) {
                 todolistCardsString += `
                 <span class="badge text-bg-success">Selesai</span>
                 `
@@ -160,10 +140,10 @@
             }
             todolistCardsString += `
                     </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">dibuat pada ${item.fields.date}</h6>
-                    <p class="card-text">${item.fields.description}</p>
-                    <a class="btn btn-success" href="change-status/{{ task.id }}">Ubah Status</a>
-                    <a class="btn btn-danger" href="delete-task/{{ task.id }}">Hapus Task</a>
+                    <h6 class="card-subtitle mb-2 text-muted">dibuat pada ${task.fields.date}</h6>
+                    <p class="card-text">${task.fields.description}</p>
+                    <a class="btn btn-success" href="change-status/${task.pk}">Ubah Status</a>
+                    <a class="btn btn-danger" onclick="deleteTodolist(${task.pk})">Hapus Task</a>
                 </div>
             </div>
             `
