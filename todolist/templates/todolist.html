@@ -69,31 +69,6 @@
         </div>
     </nav>
     
-    <!-- {% if todolist %}
-        <h1 style="text-align: center; margin-top: 20px; margin-bottom: 50px;">Halo, {{username}}!</h1>
-        {% for task in todolist %}
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        {{task.title}}
-                        {% if task.is_finished %}
-                            <span class="badge text-bg-success">Selesai</span>
-                        {% else %}
-                            <span class="badge text-bg-secondary">Belum Selesai</span>
-                        {% endif %}
-                    </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">dibuat {{task.date}}</h6>
-                    <p class="card-text">{{task.description}}</p>
-                    <a class="btn btn-success" href="change-status/{{ task.id }}">Ubah Status</a>
-                    <a class="btn btn-danger" href="delete-task/{{ task.id }}">Hapus Task</a>
-                </div>
-            </div>
-        {% endfor %}
-    {% else %}
-        <h1 style="text-align: center; margin-top: 20px;">Halo, {{username}}!</h1>
-        <p style="text-align: center;">Kamu tidak punya todolist, nih.</p>
-    {% endif %}
- -->
     <div id="top-content"></div>
     <div id="todolist-cards"></div>
 </body>
