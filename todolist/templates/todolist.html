@@ -31,11 +31,11 @@
                         {% csrf_token %}
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Judul</label>
-                            <input type="text" class="form-control" id="exampleFormControlInput1" name="task_title">
+                            <input type="text" class="form-control" id="task_title" name="task_title">
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlTextarea1" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="task_description"></textarea>
+                            <textarea class="form-control" id="task_description" rows="3" name="task_description"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -79,6 +79,9 @@
     }
 
     async function refreshTodolist() {
+        document.getElementById("task_title").value = ""
+        document.getElementById("task_description").value = ""
+
         document.getElementById("top-content").innerHTML = ""
         document.getElementById("todolist-cards").innerHTML = ""
 
